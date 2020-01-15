@@ -14,9 +14,14 @@ function setup(){
 function draw(){
     background(0);
     translate(width/2-blob.pos.x,height/2 -blob.pos.y);
-    blob.show();
-    for (var i=0; i<blobs.length; i++){
-        blobs[i].show(16);
+
+    
+    for (var i=blobs.length-1; i >=0; i--){
+        if (blob.eats(blobs[i])){
+           blobs.splice(i,1); 
+        }
     }
+
+    blob.show();
     blob.update();
 }  
